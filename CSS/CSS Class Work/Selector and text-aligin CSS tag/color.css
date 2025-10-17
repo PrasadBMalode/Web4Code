@@ -1,0 +1,16 @@
+*{
+    color: red;
+    background-color: aqua;
+}
+h2{
+    color: blue;
+}
+.first,p{
+    color: green;
+}
+.fifth{
+    color: blueviolet;
+}
+#unique{
+    color: brown;
+}
