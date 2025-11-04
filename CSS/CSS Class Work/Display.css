@@ -1,0 +1,21 @@
+.box{
+    height: 100px;
+    width: 100px;
+    border: 2px solid;
+}
+#first{
+    background-color: rgb(150, 150, 243);
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 100px;
+}
+#second{
+    background-color: rgb(60, 242, 60);
+    display: inline;
+}
+#third{
+    background-color: rgb(241, 20, 20);
+  
+    margin-left: 100px;
+    margin-right: 200px;
+}
