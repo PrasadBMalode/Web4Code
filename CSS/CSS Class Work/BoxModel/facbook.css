@@ -1,0 +1,37 @@
+#log{
+    background-color: blue;
+    color: aliceblue;
+    height: 30px;
+    width: 200px;
+  
+}
+#create{
+    
+    background-color: green;
+    color: aliceblue;
+    height: 40px;
+    width: 200px;
+}
+#form{
+  margin: right;
+  text-align: center;
+ 
+  margin-left: 100px;
+  
+
+
+}
+#div{
+    padding-left: 1000px;
+}
+#div2{
+    padding-left: 800px;
+    border-radius: 3px;
+}
+#h5{
+    color:blue;
+    
+}
+#facbook{
+    color: blue;
+}
