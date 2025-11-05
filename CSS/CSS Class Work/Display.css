@@ -12,10 +12,12 @@
 #second{
     background-color: rgb(60, 242, 60);
     display: inline;
+   
 }
 #third{
     background-color: rgb(241, 20, 20);
   
     margin-left: 100px;
     margin-right: 200px;
+    margin-top: 100px;
 }
