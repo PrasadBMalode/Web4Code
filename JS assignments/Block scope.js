@@ -12,6 +12,21 @@ function b(){
     if(true){
         let cost=30;
     }
-    console.log(cost);
+    console.log(amount);
 }
 b();
+
+const name="prasad";
+function c(){
+    if(true){
+        const name="sai";
+    }
+    console.log(name);
+}
+c();
+
+var fun=function d(){
+    console.log("this is function method");
+};
+console.log(fun);
+fun();
