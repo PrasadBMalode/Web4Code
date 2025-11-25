@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return nameValidation()">
+
+    <label for="name">Enter your Name</label>
+    <input type="text" id="name" placeholder="Enter your Name"  onkeyup="nameValidation()"  required/>
+    <br>
+    <span id="nameMsg"></span>
+    <br>
+
+    <label for="email">Enter your email</label>
+    <input type="text" id="email" placeholder="Enter your email" onkeyup="emailValidation()" required/>
+    <br>
+    <span id="emailMsg"></span>
+    <br>
+
+    <label for="number"> Enter your number</label>
+    <input type="tel" id="number"  placeholder="Enter your number" onkeyup="mobileNumber()" required/>
+    <br>
+    <span id="number"></span>
+    <br>
+
+    <button type="submit" id="button">Submit</button>
+</form>
+
+    <script src="Form.js"></script>
+</body>
+</html>
