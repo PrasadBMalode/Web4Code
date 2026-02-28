@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up Page</title>
+
+    <style>
+        body {
+            
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            margin: auto;
+            text-align: center;
+            width: 400px;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgb(176,196,222);
+            margin-top: 120px;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 90%;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <form action="getSignUp" method="get" onsubmit="return validateForm()">
+
+        <label>Username : </label><br>
+        <input type="text" placeholder="Enter your username" name="userName" id="userName">
+        <div class="error" id="userNameError"></div>
+
+        <label>Phone Number : </label><br>
+        <input type="number" placeholder="Enter your phoneNumber" name="number" id="number">
+        <div class="error" id="numberError"></div>
+
+        <label>Email : </label><br>
+        <input type="email" placeholder="Enter your email" name="email" id="email">
+        <div class="error" id="emailError"></div>
+
+        <label>Password : </label><br>
+        <input type="password" placeholder="Enter your password" name="password" id="password">
+        <div class="error" id="passwordError"></div>
+
+        <label>Confirm Password : </label><br>
+        <input type="password" placeholder="Confirm your Password" name="confirmPassword" id="confirmPassword">
+        <div class="error" id="confirmPasswordError"></div>
+
+        <br>
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
+
+<script>
+function validateForm() {
+
+    let userName = document.getElementById("userName").value.trim();
+    let number = document.getElementById("number").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    document.getElementById("userNameError").innerHTML = "";
+    document.getElementById("numberError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("confirmPasswordError").innerHTML = "";
+
+    let isValid = true;
+
+    if (userName.length <= 3 || userName.length >= 15) {
+        document.getElementById("userNameError").innerHTML =
+            "Username must be between 4 and 14 characters.";
+        isValid = false;
+    }
+
+    if (number.length !== 10 || isNaN(number)) {
+        document.getElementById("numberError").innerHTML =
+            "Mobile number must be exactly 10 digits.";
+        isValid = false;
+    }
+
+    if (!email.includes("@gmail.com") || email.length <= 13 || email.length >= 25) {
+        document.getElementById("emailError").innerHTML =
+            "Email must be a valid Gmail between 14 and 24 characters.";
+        isValid = false;
+    }
+
+    if (password.length !== 8) {
+        document.getElementById("passwordError").innerHTML =
+            "Password must be exactly 8 characters.";
+        isValid = false;
+    }
+    else if (password.charAt(0) !== password.charAt(0).toUpperCase()) {
+        document.getElementById("passwordError").innerHTML =
+            "First letter of password must be uppercase.";
+        isValid = false;
+    }
+
+    let specialChars = password.replace(/[a-zA-Z0-9]/g, '');
+    if (specialChars.length < 2) {
+        document.getElementById("passwordError").innerHTML =
+            "Password must contain at least 2 special characters.";
+        isValid = false;
+    }
+
+    if (password !== confirmPassword) {
+        document.getElementById("confirmPasswordError").innerHTML =
+            "Passwords do not match.";
+        isValid = false;
+    }
+
+    return isValid;
+}
+</script>
+
+</body>
+</html>

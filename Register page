@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Professional Registration</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        /* 
+         * CUSTOM CSS ENHANCEMENTS 
+         * Focused on a clean, centered, professional layout.
+         */
+        :root {
+            --primary-color: #4e73df;
+            --primary-hover: #2e59d9;
+            --bg-color: #f3f4f8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Subtle pattern for background */
+            background-image: radial-gradient(#dbe4ef 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* Card Styling */
+        .registration-card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            background: #fff;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-color); /* Professional top accent */
+        }
+
+        .card-header-custom {
+            background-color: transparent;
+            border-bottom: none;
+            padding-top: 2.5rem;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        .form-control {
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e3e6f0;
+            background-color: #fff;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.15);
+        }
+
+        .form-floating > label {
+            color: #858796;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            color: var(--primary-color);
+        }
+
+        /* Button Styling */
+        .btn-register {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(78, 115, 223, 0.25);
+        }
+
+        .btn-register:disabled {
+            background-color: #858796;
+            border-color: #858796;
+            transform: none;
+        }
+
+        /* Password Strength Meter */
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            background-color: #e9ecef;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Link Styling */
+        .text-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .text-link:hover {
+            text-decoration: underline;
+            color: var(--primary-hover);
+        }
+
+        /* Input Group Icon Styling */
+        .input-group-text {
+            background-color: #f8f9fc;
+            border: 1px solid #e3e6f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8">
+                <div class="card registration-card">
+                    <div class="card-body p-4 p-md-5">
+                        
+                        <!-- Header -->
+                        <div class="text-center mb-4">
+                            <h1 class="h4 text-gray-900 mb-2 fw-bold">Create an Account</h1>
+                            <p class="text-muted small">Join us today! It only takes a minute.</p>
+                        </div>
+
+                        <!-- Alert Container -->
+                        <div id="formAlert" class="alert d-none" role="alert"></div>
+
+                        <form id="registrationForm" novalidate>
+                            <!-- Name Row -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" required>
+                                        <label for="inputFirstName">First Name</label>
+                                        <div class="invalid-feedback">First name is required.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                                        <label for="inputLastName">Last Name</label>
+                                        <div class="invalid-feedback">Last name is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com" required>
+                                    <label for="inputEmail">Email Address</label>
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="inputPassword" class="form-label small text-muted fw-bold ms-1">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text rounded-start"><i class="bi bi-lock-fill text-muted"></i></span>
+                                    <input type="password" class="form-control border-start-0" id="inputPassword" placeholder="Create Password" required>
+                                    <button class="btn btn-outline-light border-start-0 text-muted" type="button" id="togglePassword">
+                                        <i class="bi bi-eye-slash" id="togglePasswordIcon"></i>
+                                    </button>
+                                </div>
+                                <!-- Strength Meter -->
+                                <div class="password-strength">
+                                    <div class="strength-bar" id="strengthBar"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted" id="strengthText">Enter password</small>
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="mb-3">
+                                <label for="inputConfirmPassword" class="form-label small text-muted fw-bold ms-1">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text rounded-start"><i class="bi bi-lock-fill text-muted"></i></span>
+                                    <input type="password" class="form-control border-start-0" id="inputConfirmPassword" placeholder="Confirm Password" required>
+                                </div>
+                                <div class="invalid-feedback">Passwords do not match.</div>
+                            </div>
+
+                            <!-- Terms -->
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                                <label class="form-check-label small text-muted" for="termsCheck">
+                                    I agree to the <a href="#" class="text-link">Terms of Service</a> and <a href="#" class="text-link">Privacy Policy</a>.
+                                </label>
+                                <div class="invalid-feedback">You must agree before submitting.</div>
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="d-grid mb-4">
+                                <button type="submit" class="btn btn-register btn-primary text-white" id="submitBtn">
+                                    <span id="btnText">Create Account</span>
+                                    <span id="btnLoader" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+
+                            <!-- Footer Link -->
+                            <div class="text-center">
+                                <span class="small text-muted">Already have an account? </span>
+                                <a href="#" class="small text-link">Login!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Optional: Copyright -->
+                <div class="text-center mt-4 text-muted small">
+                    &copy; 2023 X-Workz. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const passwordInput = document.getElementById('inputPassword');
+            const confirmPasswordInput = document.getElementById('inputConfirmPassword');
+            const togglePasswordBtn = document.getElementById('togglePassword');
+            const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const formAlert = document.getElementById('formAlert');
+
+            // --- 1. Password Visibility Toggle ---
+            togglePasswordBtn.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePasswordIcon.classList.toggle('bi-eye');
+                togglePasswordIcon.classList.toggle('bi-eye-slash');
+            });
+
+            // --- 2. Password Strength Meter ---
+            passwordInput.addEventListener('input', function() {
+                const val = passwordInput.value;
+                let strength = 0;
+                
+                if (val.length > 0) strength += 1;
+                if (val.length >= 8) strength += 1;
+                if (val.match(/[A-Z]/)) strength += 1; 
+                if (val.match(/[0-9]/)) strength += 1; 
+                if (val.match(/[^A-Za-z0-9]/)) strength += 1; 
+
+                let color = '#e9ecef';
+                let width = '0%';
+                let text = 'Too short';
+
+                switch (strength) {
+                    case 0:
+                    case 1:
+                        color = '#e74a3b'; width = '20%'; text = 'Weak'; break;
+                    case 2:
+                        color = '#f6c23e'; width = '40%'; text = 'Fair'; break;
+                    case 3:
+                        color = '#36b9cc'; width = '60%'; text = 'Good'; break;
+                    case 4:
+                        color = '#1cc88a'; width = '80%'; text = 'Strong'; break;
+                    case 5:
+                        color = '#2e59d9'; width = '100%'; text = 'Very Strong'; break;
+                }
+
+                if (val.length === 0) {
+                    width = '0%'; text = 'Enter password'; color = '#e9ecef';
+                }
+
+                strengthBar.style.width = width;
+                strengthBar.style.backgroundColor = color;
+                strengthText.innerText = text;
+                strengthText.style.color = val.length > 0 ? color : '#6c757d';
+
+                if(confirmPasswordInput.value !== '') {
+                    checkPasswordMatch();
+                }
+            });
+
+            // --- 3. Confirm Password Validation ---
+            confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+
+            function checkPasswordMatch() {
+                const password = passwordInput.value;
+                const confirm = confirmPasswordInput.value;
+
+                if (confirm && password !== confirm) {
+                    confirmPasswordInput.classList.add('is-invalid');
+                    confirmPasswordInput.classList.remove('is-valid');
+                } else if (confirm && password === confirm) {
+                    confirmPasswordInput.classList.remove('is-invalid');
+                    confirmPasswordInput.classList.add('is-valid');
+                } else {
+                    confirmPasswordInput.classList.remove('is-invalid');
+                    confirmPasswordInput.classList.remove('is-valid');
+                }
+            }
+
+            // --- 4. Form Submission & Validation ---
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                let isValid = true;
+
+                if (!form.checkValidity()) {
+                    isValid = false;
+                }
+
+                const emailInput = document.getElementById('inputEmail');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    emailInput.classList.remove('is-invalid');
+                    emailInput.classList.add('is-valid');
+                }
+
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.classList.add('is-invalid');
+                    isValid = false;
+                }
+
+                form.classList.add('was-validated');
+
+                if (isValid) {
+                    simulateServerRequest();
+                }
+            }, false);
+
+            // --- 5. Simulate API Call ---
+            function simulateServerRequest() {
+                submitBtn.disabled = true;
+                btnText.innerText = 'Creating Account...';
+                btnLoader.classList.remove('d-none');
+
+                formAlert.classList.add('d-none');
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    btnText.innerText = 'Account Created!';
+                    btnLoader.classList.add('d-none');
+                    submitBtn.classList.remove('btn-primary');
+                    submitBtn.classList.add('btn-success');
+
+                    formAlert.classList.remove('d-none', 'alert-danger');
+                    formAlert.classList.add('alert-success');
+                    formAlert.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> Registration successful! Redirecting...';
+
+                    setTimeout(() => {
+                        form.reset();
+                        form.classList.remove('was-validated');
+                        strengthBar.style.width = '0%';
+                        document.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
+                        
+                        submitBtn.classList.remove('btn-success');
+                        submitBtn.classList.add('btn-primary');
+                        btnText.innerText = 'Create Account';
+                        formAlert.classList.add('d-none');
+                    }, 3000);
+
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
